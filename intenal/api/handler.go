@@ -66,7 +66,7 @@ func UpdateItemHandler(c *gin.Context) {
 func GetShoppingListHandler(c *gin.Context) {
 	items := []models.Item{
 		{
-			ID:          1,
+			ID:          "1",
 			Name:        "Item 1",
 			Description: "Description for Item 1",
 			Amount:      "5.99",
@@ -75,7 +75,7 @@ func GetShoppingListHandler(c *gin.Context) {
 			UpdatedAt:   "2023-09-18T11:30:00Z",
 		},
 		{
-			ID:          2,
+			ID:          "2",
 			Name:        "Item 2",
 			Description: "Description for Item 2",
 			Amount:      "12.50",
