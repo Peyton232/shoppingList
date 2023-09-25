@@ -1,0 +1,132 @@
+openapi: 3.0.0
+info:
+  title: Shopping List API
+  description: RESTful API for managing a shopping list.
+  version: 1.0.0
+  contact:
+    name: Peyton Thibodeaux
+    email: peyton@thibs.dev
+  license:
+    name: MIT License
+    url: https://opensource.org/licenses/MIT
+servers:
+  - url: http://localhost:8080
+    description: Local development server
+paths:
+  /api/add-item:
+    post:
+      summary: Add an item to the shopping list
+      description: Adds a new item to the shopping list.
+      operationId: addItem
+      requestBody:
+        description: Item details to add.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ItemInput"
+      responses:
+        "201":
+          description: Item added successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Item"
+        "400":
+          description: Bad request. Invalid input.
+  /api/remove-item/{itemID}:
+    delete:
+      summary: Remove an item from the shopping list
+      description: Removes an item from the shopping list by its ID.
+      operationId: removeItem
+      parameters:
+        - name: itemID
+          in: path
+          description: ID of the item to remove.
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Item removed successfully.
+        "400":
+          description: Bad request. Invalid item ID.
+        "404":
+          description: Item not found.
+  /api/update-item/{itemID}:
+    put:
+      summary: Update an item in the shopping list
+      description: Updates an existing item in the shopping list.
+      operationId: updateItem
+      parameters:
+        - name: itemID
+          in: path
+          description: ID of the item to update.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: New item details.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ItemInput"
+      responses:
+        "200":
+          description: Item updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Item"
+        "400":
+          description: Bad request. Invalid input.
+        "404":
+          description: Item not found.
+  /api/get-shopping-list:
+    get:
+      summary: Retrieve the shopping list
+      description: Retrieves the list of items in the shopping list.
+      operationId: getShoppingList
+      responses:
+        "200":
+          description: List of items retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Item"
+components:
+  schemas:
+    Item:
+      type: object
+      properties:
+        ID:
+          type: string
+          format: uuid
+        Name:
+          type: string
+        Description:
+          type: string
+        Amount:
+          type: string
+        Completed:
+          type: boolean
+        CreatedAt:
+          type: string
+          format: date-time
+        UpdatedAt:
+          type: string
+          format: date-time
+    ItemInput:
+      type: object
+      properties:
+        Name:
+          type: string
+        Description:
+          type: string
+        Amount:
+          type: string
+        Completed:
+          type: boolean

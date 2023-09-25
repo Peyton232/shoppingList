@@ -30,11 +30,9 @@ type repository struct {
 	db *sql.DB
 }
 
-// Implement the methods of the Repository interface here.
-
 // CreateShoppingList creates a new shopping list and returns the created shopping list along with its items.
 func (r *repository) CreateShoppingList(ctx context.Context, name, description string, createdAt, updatedAt time.Time) ([]models.Item, error) {
-	// Implement the SQL query and database interaction here.
+	// SQL query and database interaction here.
 
 	// Replace these with actual values or logic
 	createdShoppingList := []models.Item{}
@@ -44,7 +42,7 @@ func (r *repository) CreateShoppingList(ctx context.Context, name, description s
 
 // GetShoppingListByID retrieves a shopping list by its ID and returns the shopping list along with its items.
 func (r *repository) GetShoppingListByID(ctx context.Context, id string) ([]models.Item, error) {
-	// Implement the SQL query and database interaction here.
+	// SQL query and database interaction here.
 
 	// Replace these with actual values or logic
 	retrievedShoppingList := []models.Item{}
@@ -54,7 +52,7 @@ func (r *repository) GetShoppingListByID(ctx context.Context, id string) ([]mode
 
 // UpdateShoppingList updates a shopping list with the provided items.
 func (r *repository) UpdateShoppingList(ctx context.Context, shoppingList []models.Item) error {
-	// Implement the SQL query and database interaction here.
+	// SQL query and database interaction here.
 
 	// Return an error if any, or nil if successful
 	return nil
@@ -62,7 +60,7 @@ func (r *repository) UpdateShoppingList(ctx context.Context, shoppingList []mode
 
 // CreateItem creates a new item within a shopping list and returns the created item.
 func (r *repository) CreateItem(ctx context.Context, shoppingListID string, name, description, amount string, completed bool, createdAt, updatedAt time.Time) (*models.Item, error) {
-	// Implement the SQL query and database interaction here.
+	// SQL query and database interaction here.
 
 	// Replace these with actual values or logic
 	createdItem := &models.Item{}
@@ -72,7 +70,7 @@ func (r *repository) CreateItem(ctx context.Context, shoppingListID string, name
 
 // GetItemByID retrieves an item by its ID and returns the item.
 func (r *repository) GetItemByID(ctx context.Context, id string) (*models.Item, error) {
-	// Implement the SQL query and database interaction here.
+	// SQL query and database interaction here.
 
 	// Replace these with actual values or logic
 	retrievedItem := &models.Item{}
@@ -82,7 +80,7 @@ func (r *repository) GetItemByID(ctx context.Context, id string) (*models.Item, 
 
 // GetItemsByShoppingListID retrieves all items in a shopping list by its ID and returns the list of items.
 func (r *repository) GetItemsByShoppingListID(ctx context.Context, shoppingListID string) ([]models.Item, error) {
-	// Implement the SQL query and database interaction here.
+	// SQL query and database interaction here.
 
 	// Replace these with actual values or logic
 	retrievedItems := []models.Item{}
@@ -92,7 +90,7 @@ func (r *repository) GetItemsByShoppingListID(ctx context.Context, shoppingListI
 
 // UpdateItem updates an item in the shopping list and returns an error if any.
 func (r *repository) UpdateItem(ctx context.Context, item *models.Item) error {
-	// Implement the SQL query and database interaction here.
+	// SQL query and database interaction here.
 
 	// Return an error if any, or nil if successful
 	return nil
